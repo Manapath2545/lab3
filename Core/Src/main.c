@@ -122,10 +122,24 @@ int main(void)
 	  if (HAL_GetTick()>= timestamp){
 		  timestamp = HAL_GetTick()+500;
 		  averageRisingedgePeriod = IC_Calc_Period();
-	  MotorReadRPM = (60/(64*12*averageRisingedgePeriod *0.000001));
-		  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,MotorSetDuty);
+		  MotorReadRPM = (60/(64*12*averageRisingedgePeriod *0.000001));
 
-	  }
+		  if (MotorControlEnable=1)
+		  {
+
+
+
+		  }
+
+		  if (MotorControlEnable=0)
+		  {
+
+		 	MotorSetDuty = 10;
+
+
+		  }
+
+	  }__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,MotorSetDuty);
 
   }
   /* USER CODE END 3 */
